@@ -11,7 +11,7 @@ print("request done")
 
 all_frames = []
 all_masks = []
-for i in range(100):
+while True:
     _, frame = cap.read()
     all_frames.append(frame)
     orig = np.copy(frame)

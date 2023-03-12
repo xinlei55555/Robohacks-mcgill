@@ -7,6 +7,7 @@
 **********************************************************************/
 #include "esp_camera.h"
 #include <WiFi.h>
+#include <ESP32Servo360.h>
 
 // ===================
 // Select camera model
@@ -28,6 +29,12 @@
 
 
 #include "camera_pins.h"
+#include <Wire.h>
+#include <LSM6.h>
+#include <LIS3MDL.h>
+
+ESP32Servo360 servo;
+
 
 const char *ssid_Router     = "Amir";  //input your wifi name
 const char *password_Router = "Pari7427";  //input your wifi passwords
@@ -40,6 +47,11 @@ void setup() {
   Serial.begin(115200);
   Serial.setDebugOutput(true);
   Serial.println();
+
+  servo.attach(14, 12); // Control pin (white), signal pin (yellow).
+  servo.setSpeed(140);
+  servo.rotateTo(0);
+  servo.wait();
 
   config_init();
 
